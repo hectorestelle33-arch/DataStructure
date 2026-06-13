@@ -347,20 +347,6 @@ void PrintALGraph(ALGraph G)
     }
 }
 
-void DestroyALGraph(ALGraph *G)
-{
-    int i;
-
-    for (i = 1; i <= G->vexnum; ++i) {
-        ArcNode *p = G->vertices[i].firstarc;
-        while (p != NULL) {
-            ArcNode *next = p->nextarc;
-            free(p);
-            p = next;
-        }
-        G->vertices[i].firstarc = NULL;
-    }
-}
 
 int main(void)
 {
@@ -390,6 +376,5 @@ int main(void)
     BFSTraverse_AL(ALG);
     printf("\n");
 
-    DestroyALGraph(&ALG);
     return 0;
 }
